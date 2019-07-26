@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(),
       home: MyHomePage(title: 'Recipe'),
     );
   }
@@ -47,15 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.view_list)),
-        BottomNavigationBarItem(icon: Icon(Icons.map)),
-        BottomNavigationBarItem(icon: Icon(Icons.add)),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark)),
-        BottomNavigationBarItem(icon: Icon(Icons.settings)),
+        BottomNavigationBarItem(icon: Icon(Icons.view_list), title: Text('')),
+        BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('')),
+        BottomNavigationBarItem(icon: Icon(Icons.add), title: Text('')),
+        BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: Text('')),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('')),
       ],
       onTap: onTabTapped,
       currentIndex: _currentIndex,
-      type: BottomNavigationBarType.shifting,),
+      type: BottomNavigationBarType.fixed,),
     );
   }
   void onTabTapped(int index) {
