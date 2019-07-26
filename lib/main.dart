@@ -22,6 +22,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -45,6 +46,22 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.view_list)),
+        BottomNavigationBarItem(icon: Icon(Icons.map)),
+        BottomNavigationBarItem(icon: Icon(Icons.add)),
+        BottomNavigationBarItem(icon: Icon(Icons.bookmark)),
+        BottomNavigationBarItem(icon: Icon(Icons.settings)),
+      ],
+      onTap: onTabTapped,
+      currentIndex: _currentIndex,
+      type: BottomNavigationBarType.shifting,),
     );
+  }
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+
+    });
   }
 }
