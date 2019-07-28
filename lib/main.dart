@@ -56,9 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(items: [
         BottomNavigationBarItem(icon: Icon(Icons.view_list), title: Text('Recipes', style: TextStyle(fontFamily: 'iropke'),)),
         BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('World', style: TextStyle(fontFamily: 'iropke'),)),
-        BottomNavigationBarItem(icon: Icon(Icons.add), title: Text('Add', style: TextStyle(fontFamily: 'iropke'),)),
         BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: Text('Favorite', style: TextStyle(fontFamily: 'iropke'),)),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('Setting', style: TextStyle(fontFamily: 'iropke'),)),
+        BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('My', style: TextStyle(fontFamily: 'iropke'),)),
       ],
       onTap: onTabTapped,
       currentIndex: _currentIndex,
