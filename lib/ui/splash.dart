@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'dart:async';
+
+class SplashPage extends StatefulWidget {
+  @override
+  _SplashPageState createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 2), () => Navigator.pushReplacementNamed(context, '/main')); // 2초 뒤에 HomePage로 이동
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/images/recipe_loading.png'), fit: BoxFit.fill)
+        ),
+        child: null,
+      ),
+    );
+  }
+}
+

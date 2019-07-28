@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:recipe/ui/splash.dart';
 
 void main() => runApp(MyApp());
+
+var routes = <String, WidgetBuilder>{
+  '/main':(BuildContext context) => MyHomePage(key: Key("myHomePage"), title: "Recipe",)
+};
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -9,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: MyHomePage(title: 'Recipe'),
+      routes: routes,
+      home: SplashPage(),
     );
   }
 }
@@ -48,15 +54,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.view_list), title: Text('')),
-        BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('')),
-        BottomNavigationBarItem(icon: Icon(Icons.add), title: Text('')),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: Text('')),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('')),
+        BottomNavigationBarItem(icon: Icon(Icons.view_list), title: Text('Recipes', style: TextStyle(fontFamily: 'iropke'),)),
+        BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('World', style: TextStyle(fontFamily: 'iropke'),)),
+        BottomNavigationBarItem(icon: Icon(Icons.add), title: Text('Add', style: TextStyle(fontFamily: 'iropke'),)),
+        BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: Text('Favorite', style: TextStyle(fontFamily: 'iropke'),)),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('Setting', style: TextStyle(fontFamily: 'iropke'),)),
       ],
       onTap: onTabTapped,
       currentIndex: _currentIndex,
-      type: BottomNavigationBarType.fixed,),
+      type: BottomNavigationBarType.fixed,
+      ),
     );
   }
   void onTabTapped(int index) {
