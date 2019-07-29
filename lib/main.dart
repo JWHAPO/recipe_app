@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:recipe/ui/splash.dart';
+import 'package:recipe/ui/recipe.dart';
+import 'package:recipe/ui/world.dart';
+import 'package:recipe/ui/favorites.dart';
+import 'package:recipe/ui/my.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,6 +35,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  final List<Widget> _tabChildren = [
+    RecipePage(),
+    WorldPage(),
+    FavoritesPage(),
+    MyPage()
+  ];
 
   @override
   void initState() {
@@ -43,20 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Start Toy Project',
-            ),
-          ],
-        ),
-      ),
+      body: _tabChildren[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(items: [
         BottomNavigationBarItem(icon: Icon(Icons.view_list), title: Text('Recipes', style: TextStyle(fontFamily: 'iropke'),)),
         BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('World', style: TextStyle(fontFamily: 'iropke'),)),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: Text('Favorite', style: TextStyle(fontFamily: 'iropke'),)),
+        BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: Text('Favorites', style: TextStyle(fontFamily: 'iropke'),)),
         BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('My', style: TextStyle(fontFamily: 'iropke'),)),
       ],
       onTap: onTabTapped,
