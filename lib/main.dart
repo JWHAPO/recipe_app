@@ -9,7 +9,7 @@ import 'package:recipe/ui/my.dart';
 void main() => runApp(MyApp());
 
 var routes = <String, WidgetBuilder>{
-  '/main':(BuildContext context) => MyHomePage(key: Key("myHomePage"), title: "Recipe",)
+  '/main':(BuildContext context) => MyHomePage(key: Key("mainPage"), title: "Recipe",)
 };
 
 class MyApp extends StatelessWidget {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: ThemeData(primaryColor: Color.fromRGBO(255, 242, 230, 1.0)),
       routes: routes,
       home: SplashPage(),
     );
@@ -48,29 +48,68 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: _tabChildren[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.view_list), title: Text('Recipes', style: TextStyle(fontFamily: 'iropke'),)),
-        BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('World', style: TextStyle(fontFamily: 'iropke'),)),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark), title: Text('Favorites', style: TextStyle(fontFamily: 'iropke'),)),
-        BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('My', style: TextStyle(fontFamily: 'iropke'),)),
+
+    final topAppBar = AppBar(
+      elevation: 0.1,
+      backgroundColor: Color.fromRGBO(255, 242, 230, 1.0),
+      title: Text(widget.title),
+      actions: <Widget>[
+        IconButton(icon: Icon(Icons.list), onPressed: (){
+
+        })
       ],
-      onTap: onTabTapped,
-      currentIndex: _currentIndex,
-      type: BottomNavigationBarType.fixed,
+    );
+
+    final makeBottom = Container(
+      height: 55.0,
+      child: BottomAppBar(
+        color: Color.fromRGBO(255, 242, 230, 1.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.home, color:Colors.grey),
+              onPressed: (){
+
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.map, color:Colors.grey),
+              onPressed: (){
+
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.bookmark, color:Colors.grey),
+              onPressed: (){
+
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.bookmark, color:Colors.grey),
+              onPressed: (){
+
+              },
+            )
+          ],
+        ),
       ),
+    );
+
+    return Scaffold(
+      appBar: topAppBar,
+      backgroundColor: Color.fromRGBO(255, 242, 230, 1.0),
+      body: _tabChildren[_currentIndex],
+      bottomNavigationBar: makeBottom,
     );
   }
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
-
     });
   }
 }
