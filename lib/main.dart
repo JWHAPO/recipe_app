@@ -35,6 +35,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  var _tab1Icon = Icon(Icons.home, color:Colors.blue);
+  var _tab2Icon = Icon(Icons.map, color:Colors.grey);
+  var _tab3Icon = Icon(Icons.bookmark, color:Colors.grey);
+  var _tab4Icon = Icon(Icons.person, color:Colors.grey);
   final List<Widget> _tabChildren = [
     RecipePage(),
     WorldPage(),
@@ -57,11 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
       elevation: 0.1,
       backgroundColor: Color.fromRGBO(255, 242, 230, 1.0),
       title: Text(widget.title),
-      actions: <Widget>[
-        IconButton(icon: Icon(Icons.list), onPressed: (){
-
-        })
-      ],
     );
 
     final makeBottom = Container(
@@ -72,27 +71,27 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.home, color:Colors.grey),
+              icon: _tab1Icon,
               onPressed: (){
-
+                onTabTapped(0);
               },
             ),
             IconButton(
-              icon: Icon(Icons.map, color:Colors.grey),
+              icon: _tab2Icon,
               onPressed: (){
-
+                onTabTapped(1);
               },
             ),
             IconButton(
-              icon: Icon(Icons.bookmark, color:Colors.grey),
+              icon: _tab3Icon,
               onPressed: (){
-
+                onTabTapped(2);
               },
             ),
             IconButton(
-              icon: Icon(Icons.bookmark, color:Colors.grey),
+              icon: _tab4Icon,
               onPressed: (){
-
+                onTabTapped(3);
               },
             )
           ],
@@ -110,6 +109,26 @@ class _MyHomePageState extends State<MyHomePage> {
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
+      _tab1Icon = Icon(Icons.home, color:Colors.grey);
+      _tab2Icon = Icon(Icons.map, color:Colors.grey);
+      _tab3Icon = Icon(Icons.bookmark, color:Colors.grey);
+      _tab4Icon = Icon(Icons.person, color:Colors.grey);
+      switch(_currentIndex){
+        case 0:
+          _tab1Icon = Icon(Icons.home, color:Colors.blue);
+          break;
+        case 1:
+          _tab2Icon = Icon(Icons.map, color:Colors.blue);
+          break;
+        case 2:
+          _tab3Icon = Icon(Icons.bookmark, color:Colors.blue);
+          break;
+        case 3:
+          _tab4Icon = Icon(Icons.person, color:Colors.blue);
+          break;
+      }
+
+
     });
   }
 }
