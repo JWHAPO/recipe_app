@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:recipe_app/model/recipe.dart';
+import 'package:recipe_app/ui/recipe_detail.dart';
 
 class RecipePage extends StatefulWidget {
   RecipePage();
@@ -133,6 +134,9 @@ class _RecipePageState extends State<RecipePage> {
         ],
       ),
       trailing: Icon(Icons.keyboard_arrow_right, color:Colors.white, size: 30.0,),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe: recipe,)));
+      },
     );
 
     Card makeCard(Recipe recipe) => Card(
