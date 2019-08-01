@@ -22,6 +22,86 @@ class _RecipePageState extends State<RecipePage> {
           subTitle: "Nice Korean Food",
           time: 30
       ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
+      Recipe(
+          title: "Kimchi Rice",
+          subTitle: "Nice Korean Food",
+          time: 20
+      ),
+      Recipe(
+          title: "Gamja Rice",
+          subTitle: "Nice Korean Food",
+          time: 30
+      ),
     ];
   }
 
