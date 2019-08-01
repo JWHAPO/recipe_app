@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:recipe/ui/splash.dart';
-import 'package:recipe/ui/recipe.dart';
-import 'package:recipe/ui/world.dart';
-import 'package:recipe/ui/favorites.dart';
-import 'package:recipe/ui/my.dart';
+import 'package:recipe_app/ui/splash.dart';
+import 'package:recipe_app/ui/recipes.dart';
+import 'package:recipe_app/ui/world.dart';
+import 'package:recipe_app/ui/favorites.dart';
+import 'package:recipe_app/ui/my.dart';
 
 void main() => runApp(MyApp());
 
