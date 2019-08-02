@@ -14,94 +14,52 @@ class _RecipePageState extends State<RecipePage> {
   List getRecipes(){
     return [
       Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
+          title: 'Kimchi Rice',
+          subTitle: 'Nice Korean Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '20 min'
       ),
       Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
+          title: 'Gamja Rice',
+          subTitle: 'Nice Korean Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '30 min'
       ),
       Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
+          title: 'Pasta',
+          subTitle: 'Italy Trasitional Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '10 min'
       ),
       Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
+          title: 'Tomyangkkung',
+          subTitle: 'Tailand Trasitional Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '120 min'
       ),
       Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
+          title: 'Kimchi Rice',
+          subTitle: 'Nice Korean Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '20 min'
       ),
       Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
+          title: 'Gamja Rice',
+          subTitle: 'Nice Korean Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '30 min'
       ),
       Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
+          title: 'Pasta',
+          subTitle: 'Italy Trasitional Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '10 min'
       ),
       Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
-      ),
-      Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
-      ),
-      Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
-      ),
-      Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
-      ),
-      Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
-      ),
-      Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
-      ),
-      Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
-      ),
-      Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
-      ),
-      Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
-      ),
-      Recipe(
-          title: "Kimchi Rice",
-          subTitle: "Nice Korean Food",
-          time: 20
-      ),
-      Recipe(
-          title: "Gamja Rice",
-          subTitle: "Nice Korean Food",
-          time: 30
+          title: 'Tomyangkkung',
+          subTitle: 'Tailand Trasitional Food',
+          contents: '요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법요리법',
+          time: '120 min'
       ),
     ];
   }
@@ -126,14 +84,14 @@ class _RecipePageState extends State<RecipePage> {
           child: Image.asset('assets/images/kimchisoup.jpg',alignment: Alignment.center,fit: BoxFit.contain,),
         ),
       ),
-      title: Text(recipe.title,style: TextStyle(color: Colors.white, fontFamily: 'iropke', fontWeight: FontWeight.bold),),
+      title: Text(recipe.title,style: TextStyle(color: Colors.pinkAccent, fontFamily: 'iropke', fontWeight: FontWeight.bold),),
       subtitle: Row(
         children: <Widget>[
-          Icon(Icons.linear_scale, color: Colors.yellowAccent),
-          Text(recipe.subTitle, style: TextStyle(color: Colors.white, fontFamily: 'iropke',))
+          Icon(Icons.linear_scale, color: Colors.blueAccent),
+          Text(recipe.subTitle, style: TextStyle(color: Colors.pinkAccent, fontFamily: 'iropke',))
         ],
       ),
-      trailing: Icon(Icons.keyboard_arrow_right, color:Colors.white, size: 30.0,),
+      trailing: Icon(Icons.keyboard_arrow_right, color:Colors.pinkAccent, size: 30.0,),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe: recipe,)));
       },
@@ -143,7 +101,7 @@ class _RecipePageState extends State<RecipePage> {
       elevation: 0.8,
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, 0.9)),
+        decoration: BoxDecoration(color: Color.fromRGBO(255, 235, 254, 0.6)),
         child: makeListTile(recipe),
       ),
     );
