@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:recipe_app/model/recipe.dart';
 import 'package:recipe_app/ui/recipe_detail.dart';
+import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
 
 class RecipePage extends StatefulWidget {
   RecipePage();
@@ -73,6 +74,9 @@ class _RecipePageState extends State<RecipePage> {
   @override
   Widget build(BuildContext context) {
 
+    final recipeBloc = RecipesProvider.of(context);
+    recipeBloc.getRecipe();
+
     ListTile  makeListTile(Recipe recipe) => ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       leading: ClipRRect(
@@ -115,6 +119,20 @@ class _RecipePageState extends State<RecipePage> {
             return makeCard(recipes[index]);
           }
       ),
+    );
+
+    final makeBody2 = StreamBuilder(
+      stream: recipeBloc.results,
+      builder: (context, snapshot){
+        if(!snapshot.hasData){
+          return Text('No Data');
+        }else{
+          return ListView.builder(
+            itemBuilder: (context,index) => null,
+            itemCount: snapshot.data.length,
+          );
+        }
+      },
     );
 
     return Center(
