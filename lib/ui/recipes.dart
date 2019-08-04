@@ -77,49 +77,57 @@ class _RecipePageState extends State<RecipePage> {
     final recipeBloc = RecipesProvider.of(context);
     recipeBloc.getRecipe();
 
-    ListTile  makeListTile(Recipe recipe) => ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-      leading: ClipRRect(
-        borderRadius: BorderRadius.circular(3.0),
-        child: Align(
-          alignment: Alignment.center,
-          heightFactor: 1.0,
-          widthFactor: 1.0,
-          child: Image.asset('assets/images/kimchisoup.jpg',alignment: Alignment.center,fit: BoxFit.contain,),
-        ),
-      ),
-      title: Text(recipe.title,style: TextStyle(color: Colors.pinkAccent, fontFamily: 'iropke', fontWeight: FontWeight.bold),),
-      subtitle: Row(
-        children: <Widget>[
-          Icon(Icons.linear_scale, color: Colors.blueAccent),
-          Text(recipe.subTitle, style: TextStyle(color: Colors.pinkAccent, fontFamily: 'iropke',))
-        ],
-      ),
-      trailing: Icon(Icons.keyboard_arrow_right, color:Colors.pinkAccent, size: 30.0,),
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe: recipe,)));
-      },
-    );
+    ListTile  makeListTile(AsyncSnapshot snapshot, int index) {
+      var title = snapshot.data[index].title;
+      var subTitle = snapshot.data[index].subTitle;
+      var contents = snapshot.data[index].contents;
+      var time = snapshot.data[index].time;
 
-    Card makeCard(Recipe recipe) => Card(
+
+      return ListTile(
+        contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(3.0),
+          child: Align(
+            alignment: Alignment.center,
+            heightFactor: 1.0,
+            widthFactor: 1.0,
+            child: Image.asset('assets/images/kimchisoup.jpg',alignment: Alignment.center,fit: BoxFit.contain,),
+          ),
+        ),
+        title: Text(title,style: TextStyle(color: Colors.pinkAccent, fontFamily: 'iropke', fontWeight: FontWeight.bold),),
+        subtitle: Row(
+          children: <Widget>[
+            Icon(Icons.linear_scale, color: Colors.blueAccent),
+            Text(subTitle, style: TextStyle(color: Colors.pinkAccent, fontFamily: 'iropke',))
+          ],
+        ),
+        trailing: Icon(Icons.keyboard_arrow_right, color:Colors.pinkAccent, size: 30.0,),
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe: snapshot.data[index],)));
+        },
+      );
+    }
+
+    Card makeCard(AsyncSnapshot snapshot, int index) => Card(
       elevation: 0.8,
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
         decoration: BoxDecoration(color: Color.fromRGBO(255, 235, 254, 0.6)),
-        child: makeListTile(recipe),
+        child: makeListTile(snapshot, index),
       ),
     );
 
-    final makeBody = Container(
-      child: ListView.builder(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          itemCount: recipes.length,
-          itemBuilder: (BuildContext context, int index){
-            return makeCard(recipes[index]);
-          }
-      ),
-    );
+//    final makeBody = Container(
+//      child: ListView.builder(
+//          scrollDirection: Axis.vertical,
+//          shrinkWrap: true,
+//          itemCount: recipes.length,
+//          itemBuilder: (BuildContext context, int index){
+//            return makeCard(recipes[index]);
+//          }
+//      ),
+//    );
 
     final makeBody2 = StreamBuilder(
       stream: recipeBloc.results,
@@ -128,7 +136,7 @@ class _RecipePageState extends State<RecipePage> {
           return Text('No Data');
         }else{
           return ListView.builder(
-            itemBuilder: (context,index) => null,
+            itemBuilder: (context,index) => makeCard(snapshot, index),
             itemCount: snapshot.data.length,
           );
         }
@@ -136,7 +144,7 @@ class _RecipePageState extends State<RecipePage> {
     );
 
     return Center(
-      child: makeBody,
+      child: makeBody2,
     );
   }
 }
