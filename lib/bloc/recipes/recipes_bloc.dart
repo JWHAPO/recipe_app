@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:recipe_app/model/recipe.dart';
 import 'package:recipe_app/repository/api.dart';
 
-class RecipeBloc{
+class RecipesBloc{
   final API api;
 
   StreamController<List<Recipe>> ctrl = StreamController();
   Stream<List<Recipe>> get results => ctrl.stream;
 
-  RecipeBloc(this.api);
+  RecipesBloc(this.api);
 
   void dispose(){
     ctrl.close();
