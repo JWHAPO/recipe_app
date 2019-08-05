@@ -7,8 +7,8 @@ class Recipe{
   Recipe({this.title, this.subTitle, this.contents, this.time});
 
   Recipe.fromJson(Map json)
-    :title = json['title'],
-    subTitle = json['subTitle'],
-    contents = json['contents'],
-    time = json['time'];
+    :title = json['title'], //레시피명
+    subTitle = json['subTitle'],//부제목
+    contents = json['contents'],//내용
+    time = json['time'];//조리시간
 }
