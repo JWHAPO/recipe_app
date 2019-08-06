@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:recipe_app/model/recipe.dart';
 import 'package:recipe_app/ui/recipe_detail.dart';
 import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
 
@@ -68,7 +67,7 @@ class _RecipePageState extends State<RecipePage> {
   Widget build(BuildContext context) {
 
     final recipesBloc = RecipesProvider.of(context);
-//    recipesBloc.getRecipe();
+    recipesBloc.getRecipe();
 
 
 
