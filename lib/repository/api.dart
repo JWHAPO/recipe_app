@@ -7,7 +7,7 @@ import 'package:recipe_app/model/recipe.dart';
 class API {
   final http.Client _client = http.Client();
 
-  static const String _url = "http://192.168.219.123:8080";
+  static const String _url = "http://192.168.0.9:8080";
 
   //Recipe List get
   Future<List<Recipe>> getRecipes() async {
@@ -18,7 +18,9 @@ class API {
         .get(Uri.parse(_url + _apiName))
         .then((res) => res.body)
         .then(json.decode)
-        .then((recipe) => list.add(Recipe.fromJson(recipe)));
+        .then((recipes) =>
+         recipes.forEach((recipe) => list.add(Recipe.fromJson(recipe)))
+    );
 
     return list;
   }

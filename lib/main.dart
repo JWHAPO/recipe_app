@@ -5,6 +5,9 @@ import 'package:recipe_app/ui/recipes.dart';
 import 'package:recipe_app/ui/world.dart';
 import 'package:recipe_app/ui/favorites.dart';
 import 'package:recipe_app/ui/my.dart';
+import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
+import 'package:recipe_app/bloc/recipes/recipes_bloc.dart';
+import 'package:recipe_app/repository/api.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var _tab3Icon = Icon(Icons.bookmark, color:Colors.grey);
   var _tab4Icon = Icon(Icons.person, color:Colors.grey);
   final List<Widget> _tabChildren = [
-    RecipePage(),
+    RecipesProvider(recipesBloc: RecipesBloc(API()), child:RecipePage(),),
     WorldPage(),
     FavoritesPage(),
     MyPage()

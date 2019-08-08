@@ -66,15 +66,16 @@ class _RecipePageState extends State<RecipePage> {
   @override
   Widget build(BuildContext context) {
 
-    final recipesBloc = RecipesProvider.of(context);
-    recipesBloc.getRecipe();
+    final recipeBloc = RecipesProvider.of(context);
+    print('!!!!!');
+    recipeBloc.getRecipe();
 
 
 
     return Scaffold(
       body: Center(
         child: StreamBuilder(
-          stream: recipesBloc.results,
+          stream: recipeBloc.results,
           builder: (context, snapshot){
             if(!snapshot.hasData){
               return Text('No Data');

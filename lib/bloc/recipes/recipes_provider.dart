@@ -10,8 +10,11 @@ class RecipesProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
-  static RecipesBloc of(BuildContext context) =>
-      (context.inheritFromWidgetOfExactType(RecipesProvider) as RecipesProvider).recipesBloc;
+  static RecipesBloc of(BuildContext context) {
+
+    return (context.inheritFromWidgetOfExactType(RecipesProvider) as RecipesProvider).recipesBloc;
+  }
+
 
   RecipesProvider({Key key, RecipesBloc recipesBloc, Widget child})
     :this.recipesBloc = recipesBloc ?? RecipesBloc(API()),
