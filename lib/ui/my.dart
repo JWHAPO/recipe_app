@@ -10,8 +10,17 @@ class MyPage extends StatefulWidget {
 class _MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('My Page',style: TextStyle(fontFamily: 'iropke'),),
+    return Column(
+      children: <Widget>[
+        SizedBox.expand(
+          child: RaisedButton(
+            onPressed: (){
+
+            },
+            child: Text('개인정보', style: TextStyle(fontFamily: 'iropke'),),
+          ),
+        )
+      ],
     );
   }
 }
