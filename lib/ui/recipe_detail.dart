@@ -32,7 +32,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
         ),
         SizedBox(height: 10.0,),
         Text(widget.recipe.title, style: TextStyle(color: Colors.white, fontFamily: 'iropke', fontSize: 45.0),),
-        SizedBox(height: 30.0,),
+        SizedBox(height: 10.0,),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[

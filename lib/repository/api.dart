@@ -7,7 +7,7 @@ import 'package:recipe_app/model/recipe.dart';
 class API {
   final http.Client _client = http.Client();
 
-  static const String _url = "http://";
+  static const String _url = "http://:8080";
 
   //Recipe List get
   Future<List<Recipe>> getRecipes() async {
