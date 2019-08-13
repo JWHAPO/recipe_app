@@ -10,6 +10,8 @@ class RecipePage extends StatefulWidget {
 
 class _RecipePageState extends State<RecipePage> {
 
+  TextEditingController editingController = TextEditingController();
+
   ListTile  makeListTile(AsyncSnapshot snapshot, int index) {
     var id = snapshot.data[index].id;
     var title = snapshot.data[index].title;
@@ -67,25 +69,47 @@ class _RecipePageState extends State<RecipePage> {
   Widget build(BuildContext context) {
 
     final recipeBloc = RecipesProvider.of(context);
-    print('!!!!!');
     recipeBloc.getRecipe();
 
 
 
     return Scaffold(
-      body: Center(
-        child: StreamBuilder(
-          stream: recipeBloc.results,
-          builder: (context, snapshot){
-            if(!snapshot.hasData){
-              return Text('No Data');
-            }else{
-              return ListView.builder(
-                itemBuilder: (context,index) => makeCard(snapshot, index),
-                itemCount: snapshot.data.length,
-              );
-            }
-          },
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value){
+
+                  },
+                  controller: editingController,
+                  decoration: InputDecoration(
+                    labelText: "Search",
+                    hintText: "Search",
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25.0))
+                    )
+                  ),
+                ),
+            ),
+            Expanded(
+              child: StreamBuilder(
+                stream: recipeBloc.results,
+                builder: (context, snapshot){
+                  if(!snapshot.hasData){
+                    return Text('No Data');
+                  }else{
+                    return ListView.builder(
+                      itemBuilder: (context,index) => makeCard(snapshot, index),
+                      itemCount: snapshot.data.length,
+                    );
+                  }
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
