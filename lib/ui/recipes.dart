@@ -100,6 +100,8 @@ class _RecipePageState extends State<RecipePage> {
                 builder: (context, snapshot){
                   if(!snapshot.hasData){
                     return Text('No Data');
+                  }else if(snapshot.hasError){
+                    return Text('Occured Error');
                   }else{
                     return ListView.builder(
                       itemBuilder: (context,index) => makeCard(snapshot, index),

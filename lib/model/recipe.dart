@@ -7,7 +7,7 @@ class Recipe{
 
   Recipe({this.id, this.title, this.subTitle, this.contents, this.time});
 
-  Recipe.fromJson(Map json)
+  Recipe.fromJson(Map<String, dynamic> json)
     :id = json['id'],
     title = json['title'], //레시피명
     subTitle = json['subTitle'],//부제목

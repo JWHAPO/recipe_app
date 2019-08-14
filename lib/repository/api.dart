@@ -8,7 +8,7 @@ import 'package:recipe_app/model/user.dart';
 class API {
   final http.Client _client = http.Client();
 
-  static const String _url = "http://192.168.0.9:8080";
+  static const String _url = "http://192.168.1.88:8080";
 
   //Recipe List get
   Future<List<Recipe>> getRecipes() async {
@@ -17,6 +17,12 @@ class API {
 
     await _client
         .get(Uri.parse(_url + _apiName))
+        .catchError((error){
+          print('$error');
+        })
+            .timeout(Duration(seconds: 30), onTimeout: (){
+          print('timeout');
+        })
         .then((res) => res.body)
         .then(json.decode)
         .then((recipes) =>
@@ -33,6 +39,12 @@ class API {
 
     await _client
         .get(Uri.parse(_url + _apiName))
+        .catchError((error){
+          print('$error');
+        })
+        .timeout(Duration(seconds: 30), onTimeout: (){
+          print('timeout');
+        })
         .then((res) => res.body)
         .then(json.decode)
         .then((users) =>
