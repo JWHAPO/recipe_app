@@ -15,8 +15,8 @@ class RecipesBloc{
     ctrl.close();
   }
 
-  void getRecipe() {
-    api.getRecipes().then((recipes) {
+  void getRecipe(String name) {
+    api.getRecipes(name).then((recipes) {
       ctrl.add(recipes);
     });
   }

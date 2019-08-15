@@ -54,22 +54,11 @@ class _RecipePageState extends State<RecipePage> {
     ),
   );
 
-//    final makeBody = Container(
-//      child: ListView.builder(
-//          scrollDirection: Axis.vertical,
-//          shrinkWrap: true,
-//          itemCount: recipes.length,
-//          itemBuilder: (BuildContext context, int index){
-//            return makeCard(recipes[index]);
-//          }
-//      ),
-//    );
-
   @override
   Widget build(BuildContext context) {
 
     final recipeBloc = RecipesProvider.of(context);
-    recipeBloc.getRecipe();
+    recipeBloc.getRecipe('aa');
 
 
 
@@ -81,7 +70,15 @@ class _RecipePageState extends State<RecipePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   onChanged: (value){
-
+//                    recipeBloc.getRecipe();
+                    print('onChanged:$value');
+                  },
+                  onEditingComplete: (){
+                    print('onEditingComplete');
+                  },
+                  onSubmitted: (value){
+                    print('onSubmit:$value');
+                    recipeBloc.getRecipe(value);
                   },
                   controller: editingController,
                   decoration: InputDecoration(
