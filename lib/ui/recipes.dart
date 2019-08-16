@@ -58,7 +58,7 @@ class _RecipePageState extends State<RecipePage> {
   Widget build(BuildContext context) {
 
     final recipeBloc = RecipesProvider.of(context);
-    recipeBloc.getRecipe('aa');
+    recipeBloc.getRecipes();
 
 
 
@@ -70,7 +70,6 @@ class _RecipePageState extends State<RecipePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   onChanged: (value){
-//                    recipeBloc.getRecipe();
                     print('onChanged:$value');
                   },
                   onEditingComplete: (){
@@ -78,7 +77,7 @@ class _RecipePageState extends State<RecipePage> {
                   },
                   onSubmitted: (value){
                     print('onSubmit:$value');
-                    recipeBloc.getRecipe(value);
+                    recipeBloc.getRecipesFromName(value);
                   },
                   controller: editingController,
                   decoration: InputDecoration(
