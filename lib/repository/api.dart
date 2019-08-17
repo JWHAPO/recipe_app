@@ -8,7 +8,7 @@ import 'package:recipe_app/model/user.dart';
 class API {
   final http.Client _client = http.Client();
 
-  static const String _url = "http://172.30.34.54:8080";
+  static const String _url = "http://192.168.0.9:8080";
 
   //Recipe get All
   Future<List<Recipe>> getRecipes() async {
@@ -20,8 +20,9 @@ class API {
         .catchError((error){
           print('$error');
         })
-            .timeout(Duration(seconds: 30), onTimeout: (){
+        .timeout(Duration(seconds: 30), onTimeout: (){
           print('timeout');
+          return null;
         })
         .then((res) => res.body)
         .then(json.decode)

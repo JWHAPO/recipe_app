@@ -6,7 +6,7 @@ import 'package:recipe_app/repository/api.dart';
 class RecipesBloc{
   final API api;
 
-  StreamController<List<Recipe>> ctrl = StreamController();
+  StreamController<List<Recipe>> ctrl = StreamController.broadcast();
   Stream<List<Recipe>> get results => ctrl.stream;
 
   RecipesBloc(this.api);
