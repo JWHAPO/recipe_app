@@ -33,15 +33,18 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
 Card makeCard(AsyncSnapshot snapshot, int index) => Card(
   color: Colors.white,
-  child: Center(
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Image.network(snapshot.data[index].imageUrl,width: 60.0, height: 60.0,),
-        Text(snapshot.data[index].title, style: TextStyle(fontFamily: 'iropke'),)
-      ],
-    ),
+  child: Stack(
+    children: <Widget>[
+      Align(
+        alignment: Alignment.center,
+        child: Image.network(snapshot.data[index].imageUrl,width: 60.0, height: 60.0,),
+      ),
+      Align(
+        alignment: Alignment.bottomCenter,
+        child: Text(snapshot.data[index].title, style: TextStyle(fontFamily: 'iropke'),),
+      ),
+
+    ],
   ),
 );
 
