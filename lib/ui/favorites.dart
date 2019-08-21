@@ -24,7 +24,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
         }else{
           return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-              itemBuilder: (context, index) => makeCard(snapshot, index)
+              itemBuilder: (context, index) => makeCard(snapshot, index),
+              itemCount: snapshot.data.length,
           );
         }
       },
