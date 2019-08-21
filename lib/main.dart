@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _tabChildren = [
     RecipesProvider(recipesBloc: RecipesBloc(API()), child:RecipePage(),),
     WorldPage(),
-    FavoritesPage(),
+    RecipesProvider(recipesBloc: RecipesBloc(API()), child:FavoritesPage(),),
     MyPage()
   ];
 
