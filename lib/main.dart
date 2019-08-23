@@ -40,11 +40,13 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   var _tab1Icon = Icon(Icons.home, color:Colors.blue);
   var _tab2Icon = Icon(Icons.map, color:Colors.grey);
-  var _tab3Icon = Icon(Icons.bookmark, color:Colors.grey);
-  var _tab4Icon = Icon(Icons.person, color:Colors.grey);
+  var _tab3Icon = Icon(Icons.add_circle_outline, color:Colors.grey);
+  var _tab4Icon = Icon(Icons.bookmark, color:Colors.grey);
+  var _tab5Icon = Icon(Icons.person, color:Colors.grey);
   final List<Widget> _tabChildren = [
     RecipesProvider(recipesBloc: RecipesBloc(API()), child:RecipePage(),),
     WorldPage(),
+    null,
     RecipesProvider(recipesBloc: RecipesBloc(API()), child:FavoritesPage(),),
     MyPage()
   ];
@@ -96,6 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: (){
                 onTabTapped(3);
               },
+            ),
+            IconButton(
+              icon: _tab5Icon,
+              onPressed: (){
+                onTabTapped(4);
+              },
             )
           ],
         ),
@@ -111,25 +119,35 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   void onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
-      _tab1Icon = Icon(Icons.home, color:Colors.grey);
-      _tab2Icon = Icon(Icons.map, color:Colors.grey);
-      _tab3Icon = Icon(Icons.bookmark, color:Colors.grey);
-      _tab4Icon = Icon(Icons.person, color:Colors.grey);
-      switch(_currentIndex){
-        case 0:
-          _tab1Icon = Icon(Icons.home, color:Colors.blue);
-          break;
-        case 1:
-          _tab2Icon = Icon(Icons.map, color:Colors.blue);
-          break;
-        case 2:
-          _tab3Icon = Icon(Icons.bookmark, color:Colors.blue);
-          break;
-        case 3:
-          _tab4Icon = Icon(Icons.person, color:Colors.blue);
-          break;
+
+      if(index==2){
+        print('open create page');
+      }else{
+        _currentIndex = index;
+        _tab1Icon = Icon(Icons.home, color:Colors.grey);
+        _tab2Icon = Icon(Icons.map, color:Colors.grey);
+        _tab3Icon = Icon(Icons.add_circle_outline, color:Colors.grey);
+        _tab4Icon = Icon(Icons.bookmark, color:Colors.grey);
+        _tab5Icon = Icon(Icons.person, color:Colors.grey);
+        switch(_currentIndex){
+          case 0:
+            _tab1Icon = Icon(Icons.home, color:Colors.blue);
+            break;
+          case 1:
+            _tab2Icon = Icon(Icons.map, color:Colors.blue);
+            break;
+          case 2:
+
+            break;
+          case 3:
+            _tab4Icon = Icon(Icons.bookmark, color:Colors.blue);
+            break;
+          case 4:
+            _tab5Icon = Icon(Icons.person, color:Colors.blue);
+            break;
+        }
       }
+
 
 
     });
