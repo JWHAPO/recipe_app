@@ -8,11 +8,13 @@ import 'package:recipe_app/ui/my.dart';
 import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
 import 'package:recipe_app/bloc/recipes/recipes_bloc.dart';
 import 'package:recipe_app/repository/api.dart';
+import 'package:recipe_app/ui/create.dart';
 
 void main() => runApp(MyApp());
 
 var routes = <String, WidgetBuilder>{
-  '/main':(BuildContext context) => MyHomePage(key: Key("mainPage"), title: "Recipe",)
+  '/main':(BuildContext context) => MyHomePage(key: Key("mainPage"), title: "Recipe",),
+  '/create':(BuildContext context) => CreateRecipe(key: Key("mainPage"),)
 };
 
 class MyApp extends StatelessWidget {
@@ -122,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       if(index==2){
         print('open create page');
+        Navigator.pushNamed(context, '/create');
       }else{
         _currentIndex = index;
         _tab1Icon = Icon(Icons.home, color:Colors.grey);
