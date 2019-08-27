@@ -9,6 +9,11 @@ class CreateRecipe extends StatefulWidget {
 }
 
 class _CreateRecipeState extends State<CreateRecipe> {
+
+  var _name= '';
+  var _city= '';
+  var _time= '';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,8 +43,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                 labelText: 'Name *',
               ),
               onSaved: (String value) {
-                // This optional block of code can be used to run
-                // code when the user saves the form.
+                _name = value;
               },
               validator: (String value) {
                 return value.contains('@') ? 'Do not use the @ char.' : null;
@@ -52,8 +56,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                 labelText: 'city *',
               ),
               onSaved: (String value) {
-                // This optional block of code can be used to run
-                // code when the user saves the form.
+                _city = value;
               },
               validator: (String value) {
                 return value.contains('@') ? 'Do not use the @ char.' : null;
@@ -66,8 +69,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                 labelText: 'time(min) *',
               ),
               onSaved: (String value) {
-                // This optional block of code can be used to run
-                // code when the user saves the form.
+                _time = value;
               },
               validator: (String value) {
                 return value.contains('@') ? 'Do not use the @ char.' : null;
