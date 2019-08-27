@@ -59,6 +59,20 @@ class _CreateRecipeState extends State<CreateRecipe> {
                 return value.contains('@') ? 'Do not use the @ char.' : null;
               },
             ),
+            TextFormField(
+              decoration: const InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: 'How many time for make this?',
+                labelText: 'time(min) *',
+              ),
+              onSaved: (String value) {
+                // This optional block of code can be used to run
+                // code when the user saves the form.
+              },
+              validator: (String value) {
+                return value.contains('@') ? 'Do not use the @ char.' : null;
+              },
+            ),
           ],
         ),
       ),
