@@ -36,47 +36,73 @@ class _CreateRecipeState extends State<CreateRecipe> {
         ),
         body: Column(
           children: <Widget>[
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'What is your full name?',
-                labelText: 'Name *',
+            Expanded(
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'What is your full name?',
+                      labelText: 'Name *',
+                    ),
+                    onSaved: (String value) {
+                      _name = value;
+                    },
+                    validator: (String value) {
+                      return value.contains('@') ? 'Do not use the @ char.' : null;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'Where do you live?',
+                      labelText: 'city *',
+                    ),
+                    onSaved: (String value) {
+                      _city = value;
+                    },
+                    validator: (String value) {
+                      return value.contains('@') ? 'Do not use the @ char.' : null;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'How many time for make this?',
+                      labelText: 'time(min) *',
+                    ),
+                    onSaved: (String value) {
+                      _time = value;
+                    },
+                    validator: (String value) {
+                      return value.contains('@') ? 'Do not use the @ char.' : null;
+                    },
+                  ),
+                ],
               ),
-              onSaved: (String value) {
-                _name = value;
-              },
-              validator: (String value) {
-                return value.contains('@') ? 'Do not use the @ char.' : null;
-              },
+              flex: 9,
             ),
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'Where do you live?',
-                labelText: 'city *',
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  RaisedButton(
+                    onPressed: () => {
+                    },
+                    color: Color.fromRGBO(58, 66, 86, 1.0),
+                    child: Text('Show preview', style: TextStyle(color: Colors.white),),
+                  ),
+                  RaisedButton(
+                    onPressed: () => {
+                    },
+                    color: Color.fromRGBO(58, 66, 86, 1.0),
+                    child: Text('Next', style: TextStyle(color: Colors.white),),
+                  )
+                ],
               ),
-              onSaved: (String value) {
-                _city = value;
-              },
-              validator: (String value) {
-                return value.contains('@') ? 'Do not use the @ char.' : null;
-              },
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'How many time for make this?',
-                labelText: 'time(min) *',
-              ),
-              onSaved: (String value) {
-                _time = value;
-              },
-              validator: (String value) {
-                return value.contains('@') ? 'Do not use the @ char.' : null;
-              },
+              flex: 1,
             ),
           ],
-        ),
+        )
       ),
     );
   }
