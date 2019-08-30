@@ -33,6 +33,27 @@ class API {
     return list;
   }
 
+  Future<Recipe> postRecipe(Recipe recipe) async{
+    Recipe resultOfRecipe;
+    String _apiName = "/recipe";
+
+    await _client
+    .post(Uri.parse(_url+_apiName), body: recipe)
+    .catchError((error){
+      print('$error');
+    })
+    .timeout(Duration(seconds: 30), onTimeout: (){
+      print('timeout');
+      return null;
+    })
+    .then((res) => res.body)
+    .then(json.decode)
+    .then((result) =>
+      resultOfRecipe = result
+    );
+
+  }
+
 
 
   //Recipe get list from name
