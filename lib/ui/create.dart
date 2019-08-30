@@ -99,6 +99,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                         child: RaisedButton(
                           onPressed: () => {},
                           color: Colors.white,
+                          shape: RoundedRectangleBorder(side: BorderSide(color:Color.fromRGBO(58, 66, 86, 1.0) )),
                           child: Text(
                             'Preview',
                             style: TextStyle(
