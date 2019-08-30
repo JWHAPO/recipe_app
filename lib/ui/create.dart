@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:recipe_app/model/recipe.dart';
+
 class CreateRecipe extends StatefulWidget {
   CreateRecipe({Key key}) : super(key: key);
 
@@ -8,9 +10,7 @@ class CreateRecipe extends StatefulWidget {
 }
 
 class _CreateRecipeState extends State<CreateRecipe> {
-  var _name = '';
-  var _city = '';
-  var _time = '';
+  Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +44,11 @@ class _CreateRecipeState extends State<CreateRecipe> {
                     TextFormField(
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
-                        hintText: 'What is your full name?',
-                        labelText: 'Name *',
+                        hintText: 'What is your Recipe''s name?',
+                        labelText: 'Title *',
                       ),
                       onSaved: (String value) {
-                        _name = value;
+                        recipe.title = value;
                       },
                       validator: (String value) {
                         return value.contains('@')
@@ -59,11 +59,11 @@ class _CreateRecipeState extends State<CreateRecipe> {
                     TextFormField(
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
-                        hintText: 'Where do you live?',
-                        labelText: 'city *',
+                        hintText: 'What is your Recipe''s sub title?',
+                        labelText: 'Sub Title *',
                       ),
                       onSaved: (String value) {
-                        _city = value;
+                        recipe.subTitle = value;
                       },
                       validator: (String value) {
                         return value.contains('@')
@@ -78,7 +78,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                         labelText: 'time(min) *',
                       ),
                       onSaved: (String value) {
-                        _time = value;
+                        recipe.time = value;
                       },
                       validator: (String value) {
                         return value.contains('@')
