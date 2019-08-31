@@ -38,7 +38,9 @@ class API {
     String _apiName = "/recipe";
 
     await _client
-    .post(Uri.parse(_url+_apiName), body: recipe)
+    .post(Uri.parse(_url+_apiName), body: {
+      'recipe':recipe
+    })
     .catchError((error){
       print('$error');
     })
