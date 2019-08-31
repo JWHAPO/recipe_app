@@ -98,6 +98,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                         padding: EdgeInsets.all(10.0),
                         child: RaisedButton(
                           onPressed: () => {},
+                          elevation: 0,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(side: BorderSide(color:Color.fromRGBO(58, 66, 86, 1.0) )),
                           child: Text(
@@ -113,6 +114,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                         padding: EdgeInsets.all(10.0),
                         child: RaisedButton(
                           onPressed: () => {},
+                          elevation: 0,
                           color: Color.fromRGBO(58, 66, 86, 1.0),
                           child: Text(
                             'Next',
