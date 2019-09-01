@@ -20,6 +20,13 @@ class RecipesBloc{
       ctrl.add(recipes);
     });
   }
+
+  void addRecipe(Recipe newRecipe){
+    api.newRecipe(newRecipe).then((recipe){
+//      ctrl.add(recipe);
+    });
+  }
+
   void getRecipesFromName(String name) {
     api.getRecipesFromName(name).then((recipes) {
       ctrl.add(recipes);

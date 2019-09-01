@@ -33,14 +33,24 @@ class API {
     return list;
   }
 
-  Future<Recipe> postRecipe(Recipe recipe) async{
-    Recipe resultOfRecipe;
+  Future<Recipe> newRecipe(Recipe recipe) async{
+    Recipe newRecipe;
     String _apiName = "/recipe";
 
+    print(Uri.parse(_url+_apiName));
+
+    return http.post(Uri.parse(_url+_apiName), body: recipe.toMap()).then((http.Response response) {
+      final int statusCode = response.statusCode;
+
+      if (statusCode < 200 || statusCode > 400 || json == null) {
+        throw new Exception("Error while fetching data");
+      }
+      return Recipe.fromJson(json.decode(response.body));
+    });
+
+
     await _client
-    .post(Uri.parse(_url+_apiName), body: {
-      'recipe':recipe
-    })
+    .post(Uri.parse(_url+_apiName), body: recipe.toMap())
     .catchError((error){
       print('$error');
     })
@@ -48,11 +58,9 @@ class API {
       print('timeout');
       return null;
     })
-    .then((res) => res.body)
-    .then(json.decode)
-    .then((result) =>
-      resultOfRecipe = result
-    );
+    ;
+
+    return newRecipe;
 
   }
 

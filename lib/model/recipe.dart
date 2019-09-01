@@ -15,4 +15,13 @@ class Recipe{
     contents = json['contents'],//내용
     time = json['time'],
     imageUrl = json['imageUrl'];//조리시간
+
+  Map toMap() {
+    var map = new Map<String, dynamic>();
+    map["title"] = title;
+    map["subTitle"] = subTitle;
+    map["time"] = time;
+
+    return map;
+  }
 }

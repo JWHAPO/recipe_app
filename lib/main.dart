@@ -14,7 +14,7 @@ void main() => runApp(MyApp());
 
 var routes = <String, WidgetBuilder>{
   '/main':(BuildContext context) => MyHomePage(key: Key("mainPage"), title: "Recipe",),
-  '/create':(BuildContext context) => CreateRecipe(key: Key("mainPage"),)
+  '/create':(BuildContext context) => RecipesProvider(recipesBloc: RecipesBloc(API()), child:CreateRecipe(key: Key("mainPage"),),)
 };
 
 class MyApp extends StatelessWidget {

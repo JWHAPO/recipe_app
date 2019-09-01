@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:recipe_app/model/recipe.dart';
+import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
+import 'package:recipe_app/bloc/recipes/recipes_bloc.dart';
 
 class CreateRecipe extends StatefulWidget {
   CreateRecipe({Key key}) : super(key: key);
@@ -10,10 +12,14 @@ class CreateRecipe extends StatefulWidget {
 }
 
 class _CreateRecipeState extends State<CreateRecipe> {
-  Recipe recipe;
+  Recipe recipe = new Recipe();
+  RecipesBloc recipeBloc;
 
   @override
   Widget build(BuildContext context) {
+
+    recipeBloc = RecipesProvider.of(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -50,6 +56,9 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       onSaved: (String value) {
                         recipe.title = value;
                       },
+                      onFieldSubmitted: (String value){
+                        recipe.title = value;
+                      },
                       validator: (String value) {
                         return value.contains('@')
                             ? 'Do not use the @ char.'
@@ -65,6 +74,9 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       onSaved: (String value) {
                         recipe.subTitle = value;
                       },
+                      onFieldSubmitted: (String value){
+                        recipe.subTitle = value;
+                      },
                       validator: (String value) {
                         return value.contains('@')
                             ? 'Do not use the @ char.'
@@ -78,6 +90,9 @@ class _CreateRecipeState extends State<CreateRecipe> {
                         labelText: 'time(min) *',
                       ),
                       onSaved: (String value) {
+                        recipe.time = value;
+                      },
+                      onFieldSubmitted: (String value){
                         recipe.time = value;
                       },
                       validator: (String value) {
@@ -113,7 +128,9 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: RaisedButton(
-                          onPressed: () => {},
+                          onPressed: () => {
+                            onNextClick()
+                          },
                           elevation: 0,
                           color: Color.fromRGBO(58, 66, 86, 1.0),
                           child: Text(
@@ -130,5 +147,11 @@ class _CreateRecipeState extends State<CreateRecipe> {
             ],
           )),
     );
+  }
+
+  void onNextClick(){
+    setState(() {
+      recipeBloc.addRecipe(recipe);
+    });
   }
 }
