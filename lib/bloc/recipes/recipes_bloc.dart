@@ -9,10 +9,14 @@ class RecipesBloc{
   StreamController<List<Recipe>> ctrl = StreamController.broadcast();
   Stream<List<Recipe>> get results => ctrl.stream;
 
+  StreamController<Recipe> recipeController = StreamController.broadcast();
+  Stream<Recipe> get recipeResult => recipeController.stream;
+
   RecipesBloc(this.api);
 
   void dispose(){
     ctrl.close();
+    recipeController.close();
   }
 
   void getRecipes() {
@@ -23,7 +27,7 @@ class RecipesBloc{
 
   void addRecipe(Recipe newRecipe){
     api.newRecipe(newRecipe).then((recipe){
-//      ctrl.add(recipe);
+      recipeController.add(recipe);
     });
   }
 

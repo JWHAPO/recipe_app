@@ -101,7 +101,7 @@ class _RecipePageState extends State<RecipePage> {
                   }else{
                     return ListView.builder(
                       itemBuilder: (context,index) => makeCard(snapshot, index),
-                      itemCount: snapshot.data.length,
+                      itemCount: snapshot.data == null? 0 :snapshot.data.length,
                     );
                   }
                 },
