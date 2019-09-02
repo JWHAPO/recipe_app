@@ -27,7 +27,7 @@ class RecipesBloc{
 
   void addRecipe(Recipe newRecipe){
     api.newRecipe(newRecipe).then((recipe){
-      recipeController.add(recipe);
+      recipeController.sink.add(recipe);
     });
   }
 

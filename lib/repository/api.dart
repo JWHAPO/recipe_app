@@ -37,7 +37,7 @@ class API {
     Recipe newRecipe;
     String _apiName = "/recipe";
 
-    return http.post(Uri.parse(_url+_apiName), body: recipe.toMap()).then((http.Response response) {
+    return http.post(Uri.parse(_url+_apiName), body: json.encode(recipe.toMap()), headers: {"Content-Type": "application/json"}).then((http.Response response) {
       final int statusCode = response.statusCode;
 
       if (statusCode < 200 || statusCode > 400 || json == null) {
