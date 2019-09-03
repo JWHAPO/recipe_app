@@ -34,10 +34,13 @@ class API {
   }
 
   Future<Recipe> newRecipe(Recipe recipe) async{
-    Recipe newRecipe;
+    Recipe newRecipe = recipe;
     String _apiName = "/recipe";
 
-    return http.post(Uri.parse(_url+_apiName), body: json.encode(recipe.toMap()), headers: {"Content-Type": "application/json"}).then((http.Response response) {
+    print('!!!');
+    print(json.encode(newRecipe.toMap()));
+
+    return http.post(Uri.parse(_url+_apiName), body: json.encode(newRecipe.toMap()), headers: {"Content-Type": "application/json"}).then((http.Response response) {
       final int statusCode = response.statusCode;
 
       if (statusCode < 200 || statusCode > 400 || json == null) {
@@ -47,18 +50,18 @@ class API {
     });
 
 
-    await _client
-    .post(Uri.parse(_url+_apiName), body: recipe.toMap())
-    .catchError((error){
-      print('$error');
-    })
-    .timeout(Duration(seconds: 30), onTimeout: (){
-      print('timeout');
-      return null;
-    })
-    ;
-
-    return newRecipe;
+//    await _client
+//    .post(Uri.parse(_url+_apiName), body: newRecipe.toMap())
+//    .catchError((error){
+//      print('$error');
+//    })
+//    .timeout(Duration(seconds: 30), onTimeout: (){
+//      print('timeout');
+//      return null;
+//    })
+//    ;
+//
+//    return newRecipe;
 
   }
 

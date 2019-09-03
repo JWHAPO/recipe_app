@@ -12,8 +12,11 @@ class CreateRecipe extends StatefulWidget {
 }
 
 class _CreateRecipeState extends State<CreateRecipe> {
-  Recipe recipe = new Recipe();
   RecipesBloc recipeBloc;
+  final _titleTextEditingController = TextEditingController();
+  final _subTitleTextEditingController = TextEditingController();
+  final _timeTextEditingController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +51,12 @@ class _CreateRecipeState extends State<CreateRecipe> {
                 child: Column(
                   children: <Widget>[
                     TextFormField(
+                      controller: _titleTextEditingController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'What is your Recipe''s name?',
                         labelText: 'Title *',
                       ),
-                      onSaved: (String value) {
-                        recipe.title = value;
-                      },
-                      onFieldSubmitted: (String value){
-                        recipe.title = value;
-                      },
                       validator: (String value) {
                         return value.contains('@')
                             ? 'Do not use the @ char.'
@@ -66,17 +64,12 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       },
                     ),
                     TextFormField(
+                      controller: _subTitleTextEditingController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'What is your Recipe''s sub title?',
                         labelText: 'Sub Title *',
                       ),
-                      onSaved: (String value) {
-                        recipe.subTitle = value;
-                      },
-                      onFieldSubmitted: (String value){
-                        recipe.subTitle = value;
-                      },
                       validator: (String value) {
                         return value.contains('@')
                             ? 'Do not use the @ char.'
@@ -84,17 +77,12 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       },
                     ),
                     TextFormField(
+                      controller: _timeTextEditingController,
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'How many time for make this?',
                         labelText: 'time(min) *',
                       ),
-                      onSaved: (String value) {
-                        recipe.time = value;
-                      },
-                      onFieldSubmitted: (String value){
-                        recipe.time = value;
-                      },
                       validator: (String value) {
                         return value.contains('@')
                             ? 'Do not use the @ char.'
@@ -151,6 +139,10 @@ class _CreateRecipeState extends State<CreateRecipe> {
 
   void onNextClick(){
     setState(() {
+      print('1aaaaaaaaa${_titleTextEditingController.value.text}');
+      print('2aaaaaaaaa${_subTitleTextEditingController.value.text}');
+      print('3aaaaaaaaa${_timeTextEditingController.value.text}');
+      Recipe recipe = new Recipe(title: _titleTextEditingController.value.text, subTitle: _subTitleTextEditingController.value.text, time:_timeTextEditingController.value.text );
       recipeBloc.addRecipe(recipe);
     });
   }

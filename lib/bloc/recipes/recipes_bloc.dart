@@ -21,19 +21,19 @@ class RecipesBloc{
 
   void getRecipes() {
     api.getRecipes().then((recipes) {
-      ctrl.add(recipes);
+      ctrl.sink.add(recipes);
     });
   }
 
   void addRecipe(Recipe newRecipe){
-    api.newRecipe(newRecipe).then((recipe){
-      recipeController.sink.add(recipe);
-    });
+    print('aaaaaaaaa${newRecipe.title}');
+    api.newRecipe(newRecipe);
+    getRecipes();
   }
 
   void getRecipesFromName(String name) {
     api.getRecipesFromName(name).then((recipes) {
-      ctrl.add(recipes);
+      ctrl.sink.add(recipes);
     });
   }
 

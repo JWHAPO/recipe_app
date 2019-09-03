@@ -18,9 +18,12 @@ class Recipe{
 
   Map toMap() {
     var map = new Map<String, dynamic>();
+    map["id"] = id;
     map["title"] = title;
     map["subTitle"] = subTitle;
+    map["contents"] = contents;
     map["time"] = time;
+    map["imageUrl"] = imageUrl;
 
     return map;
   }
