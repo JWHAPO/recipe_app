@@ -14,6 +14,7 @@ class CreateRecipe extends StatefulWidget {
 class _CreateRecipeState extends State<CreateRecipe> {
   RecipesBloc recipeBloc;
   final _titleTextEditingController = TextEditingController();
+  final _contentsTextEditingController = TextEditingController();
   final _subTitleTextEditingController = TextEditingController();
   final _timeTextEditingController = TextEditingController();
 
@@ -56,6 +57,19 @@ class _CreateRecipeState extends State<CreateRecipe> {
                         icon: Icon(Icons.person),
                         hintText: 'What is your Recipe''s name?',
                         labelText: 'Title *',
+                      ),
+                      validator: (String value) {
+                        return value.contains('@')
+                            ? 'Do not use the @ char.'
+                            : null;
+                      },
+                    ),
+                    TextFormField(
+                      controller: _contentsTextEditingController,
+                      decoration: const InputDecoration(
+                        icon: Icon(Icons.person),
+                        hintText: 'Write your recipe ',
+                        labelText: 'Contents *',
                       ),
                       validator: (String value) {
                         return value.contains('@')
@@ -139,10 +153,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
 
   void onNextClick(){
     setState(() {
-      print('1aaaaaaaaa${_titleTextEditingController.value.text}');
-      print('2aaaaaaaaa${_subTitleTextEditingController.value.text}');
-      print('3aaaaaaaaa${_timeTextEditingController.value.text}');
-      Recipe recipe = new Recipe(title: _titleTextEditingController.value.text, subTitle: _subTitleTextEditingController.value.text, time:_timeTextEditingController.value.text );
+      Recipe recipe = new Recipe(title: _titleTextEditingController.value.text, contents: _contentsTextEditingController.value.text, subTitle: _subTitleTextEditingController.value.text, time:_timeTextEditingController.value.text );
       recipeBloc.addRecipe(recipe);
     });
   }
