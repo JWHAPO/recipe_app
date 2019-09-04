@@ -26,7 +26,7 @@ class _RecipePageState extends State<RecipePage> {
         borderRadius: BorderRadius.circular(3.0),
         child: Align(
           alignment: Alignment.center,
-          heightFactor: 1.0,
+          heightFactor: 0.9,
           widthFactor: 1.0,
           child: Image.asset('assets/images/kimchisoup.jpg',alignment: Alignment.center,fit: BoxFit.contain,),
         ),
@@ -49,7 +49,7 @@ class _RecipePageState extends State<RecipePage> {
     elevation: 0.8,
     margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
     child: Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(255, 235, 254, 0.6)),
+      decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.6)),
       child: makeListTile(snapshot, index),
     ),
   );
