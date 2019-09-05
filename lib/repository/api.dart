@@ -8,7 +8,7 @@ import 'package:recipe_app/model/user.dart';
 class API {
   final http.Client _client = http.Client();
 
-  static const String _url = "http://125.129.235.46:8080";
+  static const String _url = "http://192.168.1.88:8080";
 
   //Recipe get All
   Future<List<Recipe>> getRecipes() async {
@@ -37,31 +37,32 @@ class API {
     Recipe newRecipe = recipe;
     String _apiName = "/recipe";
 
-    print('!!!');
-    print(json.encode(newRecipe.toMap()));
-
-    return http.post(Uri.parse(_url+_apiName), body: json.encode(newRecipe.toMap()), headers: {"Content-Type": "application/json"}).then((http.Response response) {
-      final int statusCode = response.statusCode;
-
-      if (statusCode < 200 || statusCode > 400 || json == null) {
-        throw new Exception("Error while fetching data");
-      }
-      return Recipe.fromJson(json.decode(response.body));
-    });
-
-
-//    await _client
-//    .post(Uri.parse(_url+_apiName), body: newRecipe.toMap())
-//    .catchError((error){
-//      print('$error');
-//    })
-//    .timeout(Duration(seconds: 30), onTimeout: (){
-//      print('timeout');
-//      return null;
-//    })
-//    ;
+//    return http.post(Uri.parse(_url+_apiName), body: json.encode(newRecipe.toMap()), headers: {"Content-Type": "application/json"}).then((http.Response response) {
+//      final int statusCode = response.statusCode;
 //
-//    return newRecipe;
+//      if (statusCode < 200 || statusCode > 400 || json == null) {
+//        throw new Exception("Error while fetching data");
+//      }
+//      return Recipe.fromJson(json.decode(response.body));
+//    });
+
+
+    await _client
+    .post(Uri.parse(_url+_apiName), body: json.encode(newRecipe.toMap()), headers:{"Content-Type": "application/json"} )
+    .catchError((error){
+      print('$error');
+    })
+    .timeout(Duration(seconds: 30), onTimeout: (){
+      print('timeout');
+      return null;
+    })
+    .then((res) => res.body)
+    .then(json.decode)
+    .then((recipes) =>
+        newRecipe = Recipe.fromJson(recipes)
+    );
+
+    return newRecipe;
 
   }
 

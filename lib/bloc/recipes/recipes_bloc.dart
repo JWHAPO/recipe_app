@@ -26,7 +26,6 @@ class RecipesBloc{
   }
 
   void addRecipe(Recipe newRecipe){
-    print('aaaaaaaaa${newRecipe.title}');
     api.newRecipe(newRecipe);
     getRecipes();
   }
