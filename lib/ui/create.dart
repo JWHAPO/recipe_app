@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/model/recipe.dart';
 import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
 import 'package:recipe_app/bloc/recipes/recipes_bloc.dart';
+import 'package:recipe_app/ui/recipe_detail.dart';
 
 class CreateRecipe extends StatefulWidget {
   CreateRecipe({Key key}) : super(key: key);
@@ -114,7 +115,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: RaisedButton(
-                          onPressed: () => {},
+                          onPressed: () => onPreviewRecipe(),
                           elevation: 0,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(side: BorderSide(color:Color.fromRGBO(58, 66, 86, 1.0) )),
@@ -130,13 +131,11 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: RaisedButton(
-                          onPressed: () => {
-                            onNextClick()
-                          },
+                          onPressed: () => onSaveRecipe(),
                           elevation: 0,
                           color: Color.fromRGBO(58, 66, 86, 1.0),
                           child: Text(
-                            'Next',
+                            'Save',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -151,7 +150,12 @@ class _CreateRecipeState extends State<CreateRecipe> {
     );
   }
 
-  void onNextClick(){
+  void onPreviewRecipe(){
+    Recipe recipe = new Recipe(title: _titleTextEditingController.value.text, contents: _contentsTextEditingController.value.text, subTitle: _subTitleTextEditingController.value.text, time:_timeTextEditingController.value.text );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => RecipeDetailPage(recipe: recipe,)));
+  }
+
+  void onSaveRecipe(){
     setState(() {
       Recipe recipe = new Recipe(title: _titleTextEditingController.value.text, contents: _contentsTextEditingController.value.text, subTitle: _subTitleTextEditingController.value.text, time:_timeTextEditingController.value.text );
       recipeBloc.addRecipe(recipe);
