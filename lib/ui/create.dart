@@ -104,6 +104,18 @@ class _CreateRecipeState extends State<CreateRecipe> {
                             : null;
                       },
                     ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      margin: EdgeInsets.only(top: 20.0),
+                      height: 100,
+                      width: 300,
+                      child: IconButton(icon: Icon(Icons.camera_alt,color: Colors.white,), onPressed: (){
+
+                      }),
+                    )
                   ],
                 ),
                 flex: 9,
