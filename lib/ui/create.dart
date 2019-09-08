@@ -4,9 +4,14 @@ import 'package:recipe_app/model/recipe.dart';
 import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
 import 'package:recipe_app/bloc/recipes/recipes_bloc.dart';
 import 'package:recipe_app/ui/recipe_detail.dart';
+import 'package:camera/camera.dart';
 
 class CreateRecipe extends StatefulWidget {
-  CreateRecipe({Key key}) : super(key: key);
+  final CameraDescription camera;
+
+//  final cameras = await availableCameras();
+//  final firstCamera = cameras.first;
+  CreateRecipe({Key key, @required this.camera}) : super(key: key);
 
   @override
   _CreateRecipeState createState() => _CreateRecipeState();
@@ -19,6 +24,22 @@ class _CreateRecipeState extends State<CreateRecipe> {
   final _subTitleTextEditingController = TextEditingController();
   final _timeTextEditingController = TextEditingController();
 
+  CameraController _cameraController;
+  Future<void> _initializeCameraControllerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _cameraController = CameraController(widget.camera, ResolutionPreset.medium);
+
+    _initializeCameraControllerFuture = _cameraController.initialize();
+  }
+
+  @override
+  void dispose() {
+    _cameraController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
