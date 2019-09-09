@@ -4,14 +4,12 @@ import 'package:recipe_app/model/recipe.dart';
 import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
 import 'package:recipe_app/bloc/recipes/recipes_bloc.dart';
 import 'package:recipe_app/ui/recipe_detail.dart';
-import 'package:camera/camera.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class CreateRecipe extends StatefulWidget {
-  final CameraDescription camera;
 
-//  final cameras = await availableCameras();
-//  final firstCamera = cameras.first;
-  CreateRecipe({Key key, @required this.camera}) : super(key: key);
+  CreateRecipe({Key key}) : super(key: key);
 
   @override
   _CreateRecipeState createState() => _CreateRecipeState();
@@ -19,26 +17,21 @@ class CreateRecipe extends StatefulWidget {
 
 class _CreateRecipeState extends State<CreateRecipe> {
   RecipesBloc recipeBloc;
+  File _image;
   final _titleTextEditingController = TextEditingController();
   final _contentsTextEditingController = TextEditingController();
   final _subTitleTextEditingController = TextEditingController();
   final _timeTextEditingController = TextEditingController();
 
-  CameraController _cameraController;
-  Future<void> _initializeCameraControllerFuture;
-
+  Future getImage() async{
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _image = image;
+    });
+  }
   @override
   void initState() {
     super.initState();
-    _cameraController = CameraController(widget.camera, ResolutionPreset.medium);
-
-    _initializeCameraControllerFuture = _cameraController.initialize();
-  }
-
-  @override
-  void dispose() {
-    _cameraController.dispose();
-    super.dispose();
   }
 
   @override
@@ -133,9 +126,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       margin: EdgeInsets.only(top: 20.0),
                       height: 100,
                       width: 300,
-                      child: IconButton(icon: Icon(Icons.camera_alt,color: Colors.white,), onPressed: (){
-
-                      }),
+                      child: _image == null ? IconButton(icon: Icon(Icons.camera_alt,color: Colors.white,), onPressed: getImage):Image.file(_image),
                     )
                   ],
                 ),
