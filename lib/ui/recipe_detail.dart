@@ -65,7 +65,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
 
     final topContent = Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: widget.image == null ? AssetImage('') : FileImage(Image.file(widget.image)), fit: BoxFit.cover),
+        image: DecorationImage(image: widget.image == null ? AssetImage('') : FileImage(widget.image), fit: BoxFit.cover),
       ),
       child: Stack(
         children: <Widget>[
