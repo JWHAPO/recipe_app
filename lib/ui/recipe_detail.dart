@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:recipe_app/model/recipe.dart';
+import 'dart:io';
 
 class RecipeDetailPage extends StatefulWidget {
   final Recipe recipe;
+  final File image;
 
-  RecipeDetailPage({Key key, this.recipe}) : super(key: key);
+  RecipeDetailPage({Key key, this.recipe, this.image}) : super(key: key);
 
   @override
   _RecipeDetailPageState createState() => _RecipeDetailPageState();
@@ -61,38 +63,43 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
       ],
     );
 
-    final topContent = Stack(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(left: 10.0),
-          height: MediaQuery.of(context).size.height * 0.5,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/detail_top.jpg'),
-              fit: BoxFit.cover
-            )
+    final topContent = Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(image: widget.image == null ? AssetImage('') : FileImage(Image.file(widget.image)), fit: BoxFit.cover),
+      ),
+      child: Stack(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(left: 10.0),
+            height: MediaQuery.of(context).size.height * 0.5,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/detail_top.jpg'),
+                    fit: BoxFit.cover
+                )
+            ),
           ),
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.5,
-          padding: EdgeInsets.all(40.0),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: Color.fromRGBO(58, 66, 86, 0.9)),
-          child: Center(
-            child: topContentText,
+          Container(
+            height: MediaQuery.of(context).size.height * 0.5,
+            padding: EdgeInsets.all(40.0),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(color: Color.fromRGBO(58, 66, 86, 0.9)),
+            child: Center(
+              child: topContentText,
+            ),
           ),
-        ),
-        Positioned(
-          left: 8.0,
-          top: 40.0,
-          child: InkWell(
-            onTap: (){
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back, color: Colors.white,),
-          ),
-        )
-      ],
+          Positioned(
+            left: 8.0,
+            top: 40.0,
+            child: InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back, color: Colors.white,),
+            ),
+          )
+        ],
+      ),
     );
 
     final bottomContentText = Text(
