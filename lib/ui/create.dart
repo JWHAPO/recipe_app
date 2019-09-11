@@ -39,6 +39,74 @@ class _CreateRecipeState extends State<CreateRecipe> {
 
     recipeBloc = RecipesProvider.of(context);
 
+
+    var firstColumn = Column(
+      children: <Widget>[
+        TextFormField(
+          controller: _titleTextEditingController,
+          decoration: const InputDecoration(
+            icon: Icon(Icons.person),
+            hintText: 'What is your Recipe''s name?',
+            labelText: 'Title *',
+          ),
+          validator: (String value) {
+            return value.contains('@')
+                ? 'Do not use the @ char.'
+                : null;
+          },
+        ),
+        TextFormField(
+          controller: _contentsTextEditingController,
+          decoration: const InputDecoration(
+            icon: Icon(Icons.person),
+            hintText: 'Write your recipe ',
+            labelText: 'Contents *',
+          ),
+          validator: (String value) {
+            return value.contains('@')
+                ? 'Do not use the @ char.'
+                : null;
+          },
+        ),
+        TextFormField(
+          controller: _subTitleTextEditingController,
+          decoration: const InputDecoration(
+            icon: Icon(Icons.person),
+            hintText: 'What is your Recipe''s sub title?',
+            labelText: 'Sub Title *',
+          ),
+          validator: (String value) {
+            return value.contains('@')
+                ? 'Do not use the @ char.'
+                : null;
+          },
+        ),
+        TextFormField(
+          controller: _timeTextEditingController,
+          decoration: const InputDecoration(
+            icon: Icon(Icons.person),
+            hintText: 'How many time for make this?',
+            labelText: 'time(min) *',
+          ),
+          validator: (String value) {
+            return value.contains('@')
+                ? 'Do not use the @ char.'
+                : null;
+          },
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          margin: EdgeInsets.only(top: 20.0),
+          height: 100,
+          width: 300,
+          child: _image == null ? IconButton(icon: Icon(Icons.camera_alt,color: Colors.white,), onPressed: getImage):Image.file(_image),
+        )
+      ],
+    );
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
