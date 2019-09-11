@@ -18,6 +18,7 @@ class CreateRecipe extends StatefulWidget {
 class _CreateRecipeState extends State<CreateRecipe> {
   RecipesBloc recipeBloc;
   File _image;
+  int _bodyIndex = 0;
   final _titleTextEditingController = TextEditingController();
   final _contentsTextEditingController = TextEditingController();
   final _subTitleTextEditingController = TextEditingController();
@@ -25,6 +26,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
 
   Future getImage() async{
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
     setState(() {
       _image = image;
     });
@@ -107,6 +109,24 @@ class _CreateRecipeState extends State<CreateRecipe> {
       ],
     );
 
+
+    var secondColumn = Column(
+      children: <Widget>[
+        Text('Select type'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('This is second')
+          ],
+        )
+      ],
+    );
+
+    List<Widget> _bodys = [
+    firstColumn,
+    secondColumn
+    ];
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -132,72 +152,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
           body: Column(
             children: <Widget>[
               Expanded(
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      controller: _titleTextEditingController,
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'What is your Recipe''s name?',
-                        labelText: 'Title *',
-                      ),
-                      validator: (String value) {
-                        return value.contains('@')
-                            ? 'Do not use the @ char.'
-                            : null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _contentsTextEditingController,
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'Write your recipe ',
-                        labelText: 'Contents *',
-                      ),
-                      validator: (String value) {
-                        return value.contains('@')
-                            ? 'Do not use the @ char.'
-                            : null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _subTitleTextEditingController,
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'What is your Recipe''s sub title?',
-                        labelText: 'Sub Title *',
-                      ),
-                      validator: (String value) {
-                        return value.contains('@')
-                            ? 'Do not use the @ char.'
-                            : null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _timeTextEditingController,
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'How many time for make this?',
-                        labelText: 'time(min) *',
-                      ),
-                      validator: (String value) {
-                        return value.contains('@')
-                            ? 'Do not use the @ char.'
-                            : null;
-                      },
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      margin: EdgeInsets.only(top: 20.0),
-                      height: 100,
-                      width: 300,
-                      child: _image == null ? IconButton(icon: Icon(Icons.camera_alt,color: Colors.white,), onPressed: getImage):Image.file(_image),
-                    )
-                  ],
-                ),
+                child: _bodys[_bodyIndex],
                 flex: 9,
               ),
               Expanded(
@@ -240,6 +195,13 @@ class _CreateRecipeState extends State<CreateRecipe> {
             ],
           )),
     );
+  }
+
+  void onNextClick(){
+    setState(() {
+      ++_bodyIndex;
+      if(_bodyIndex>1) _bodyIndex = 0;
+    });
   }
 
   void onPreviewRecipe(){
