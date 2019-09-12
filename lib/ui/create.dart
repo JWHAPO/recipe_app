@@ -116,7 +116,20 @@ class _CreateRecipeState extends State<CreateRecipe> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('This is second')
+            Text('This is second'),
+
+          ],
+        )
+      ],
+    );
+    var thirdColumn = Column(
+      children: <Widget>[
+        Text('Select type'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('This is third'),
+
           ],
         )
       ],
@@ -124,7 +137,8 @@ class _CreateRecipeState extends State<CreateRecipe> {
 
     List<Widget> _bodys = [
     firstColumn,
-    secondColumn
+    secondColumn,
+    thirdColumn
     ];
 
     return MaterialApp(
@@ -200,7 +214,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
   void onNextClick(){
     setState(() {
       ++_bodyIndex;
-      if(_bodyIndex>1) _bodyIndex = 0;
+      if(_bodyIndex>2) _bodyIndex = 0;
     });
   }
 
