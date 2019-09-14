@@ -225,7 +225,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                           elevation: 0,
                           color: Color.fromRGBO(58, 66, 86, 1.0),
                           child: Text(
-                            'Save',
+                            'Next',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
