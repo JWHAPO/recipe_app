@@ -19,6 +19,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
   RecipesBloc recipeBloc;
   File _image;
   int _bodyIndex = 0;
+  int selectedRadio;
   final _titleTextEditingController = TextEditingController();
   final _contentsTextEditingController = TextEditingController();
   final _subTitleTextEditingController = TextEditingController();
@@ -34,6 +35,13 @@ class _CreateRecipeState extends State<CreateRecipe> {
   @override
   void initState() {
     super.initState();
+    selectedRadio = 0;
+  }
+
+  setSelectedRadio(int val){
+    setState(() {
+      selectedRadio = val;
+    });
   }
 
   @override
@@ -116,7 +124,28 @@ class _CreateRecipeState extends State<CreateRecipe> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('This is second'),
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Radio(value: 1,
+                      groupValue: selectedRadio,
+                      activeColor: Colors.green,
+                      onChanged: (val){
+                        print('Radio $val');
+                        setSelectedRadio(val);
+                      },
+                ),
+                Text('Type 1'),
+                Radio(value: 2,
+                  groupValue: selectedRadio,
+                  activeColor: Colors.green,
+                  onChanged: (val){
+                    setSelectedRadio(val);
+                  },
+                ),
+                Text('Type 2'),
+              ],
+            )
 
           ],
         )
