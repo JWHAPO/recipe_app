@@ -20,6 +20,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
   File _image;
   int _bodyIndex = 0;
   int selectedRadio;
+  String rightButtonText = 'Next';
   final _titleTextEditingController = TextEditingController();
   final _contentsTextEditingController = TextEditingController();
   final _subTitleTextEditingController = TextEditingController();
@@ -140,6 +141,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
                   groupValue: selectedRadio,
                   activeColor: Colors.green,
                   onChanged: (val){
+                    print('Radio $val');
                     setSelectedRadio(val);
                   },
                 ),
@@ -221,11 +223,11 @@ class _CreateRecipeState extends State<CreateRecipe> {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: RaisedButton(
-                          onPressed: () => onSaveRecipe(),
+                          onPressed: () => onNextClick(),
                           elevation: 0,
                           color: Color.fromRGBO(58, 66, 86, 1.0),
                           child: Text(
-                            'Next',
+                            rightButtonText,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -243,7 +245,13 @@ class _CreateRecipeState extends State<CreateRecipe> {
   void onNextClick(){
     setState(() {
       ++_bodyIndex;
-      if(_bodyIndex>2) _bodyIndex = 0;
+      if(_bodyIndex == 2 ){
+        rightButtonText = 'Save';
+      }
+      if(_bodyIndex>2){
+        onSaveRecipe();
+        _bodyIndex = 0;
+      }
     });
   }
 
@@ -256,6 +264,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
     setState(() {
       Recipe recipe = new Recipe(title: _titleTextEditingController.value.text, contents: _contentsTextEditingController.value.text, subTitle: _subTitleTextEditingController.value.text, time:_timeTextEditingController.value.text );
       recipeBloc.addRecipe(recipe);
+      Navigator.pop(context);
     });
   }
 }
