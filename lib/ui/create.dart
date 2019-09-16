@@ -21,6 +21,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
   int _bodyIndex = 0;
   int selectedRadio;
   String rightButtonText = 'Next';
+  final int maxPageSize = 2;
   final _titleTextEditingController = TextEditingController();
   final _contentsTextEditingController = TextEditingController();
   final _subTitleTextEditingController = TextEditingController();
@@ -51,7 +52,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
     recipeBloc = RecipesProvider.of(context);
 
 
-    var firstColumn = Column(
+    var firstBody = Column(
       children: <Widget>[
         TextFormField(
           controller: _titleTextEditingController,
@@ -119,7 +120,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
     );
 
 
-    var secondColumn = Column(
+    var secondBody = Column(
       children: <Widget>[
         Text('Select type'),
         Row(
@@ -153,7 +154,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
         )
       ],
     );
-    var thirdColumn = Column(
+    var thirdBody = Column(
       children: <Widget>[
         Text('Select type'),
         Row(
@@ -166,10 +167,10 @@ class _CreateRecipeState extends State<CreateRecipe> {
       ],
     );
 
-    List<Widget> _bodys = [
-    firstColumn,
-    secondColumn,
-    thirdColumn
+    List<Widget> _bodies = [
+    firstBody,
+    secondBody,
+    thirdBody
     ];
 
     return MaterialApp(
@@ -197,7 +198,7 @@ class _CreateRecipeState extends State<CreateRecipe> {
           body: Column(
             children: <Widget>[
               Expanded(
-                child: _bodys[_bodyIndex],
+                child: _bodies[_bodyIndex],
                 flex: 9,
               ),
               Expanded(
@@ -245,10 +246,10 @@ class _CreateRecipeState extends State<CreateRecipe> {
   void onNextClick(){
     setState(() {
       ++_bodyIndex;
-      if(_bodyIndex == 2 ){
+      if(_bodyIndex == maxPageSize ){
         rightButtonText = 'Save';
       }
-      if(_bodyIndex>2){
+      if(_bodyIndex>maxPageSize){
         onSaveRecipe();
         _bodyIndex = 0;
       }
