@@ -181,29 +181,216 @@ class _CreateRecipeState extends State<CreateRecipe> {
         Text('Select type'),
         Container(
           margin: EdgeInsets.symmetric(vertical: 20.0),
-          height: 200.0,
+          height: 80.0,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              Container(
-                width: 160.0,
-                color: Colors.red,
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
               ),
-              Container(
-                width: 160.0,
-                color: Colors.blue,
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
               ),
-              Container(
-                width: 160.0,
-                color: Colors.green,
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
               ),
-              Container(
-                width: 160.0,
-                color: Colors.yellow,
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
               ),
-              Container(
-                width: 160.0,
-                color: Colors.orange,
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
+              ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.blueGrey
+                    ),
+                  ),
+                  Container(
+                    width: 80.0,
+                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Test1',style: TextStyle(color: Colors.white),),
+                  )
+                ],
               ),
             ],
           ),
