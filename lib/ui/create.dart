@@ -182,218 +182,38 @@ class _CreateRecipeState extends State<CreateRecipe> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 20.0),
           height: 80.0,
-          child: ListView(
+          child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
+            padding: EdgeInsets.only(left: 5.0, right: 5.0),
+            itemBuilder: (context, index){
+              return ListTile(
+                subtitle: Stack(
+                  children: <Widget>[
+                    Container(
+                      width: 80.0,
+                      height: 80.0,
+                      margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          color: Colors.blueGrey
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: 80.0,
-                    height: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage('https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_960_720.jpg')
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.blueGrey
-                    ),
-                  ),
-                  Container(
-                    width: 80.0,
-                    margin: EdgeInsets.only(left: 8.0, right: 8.0),
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Test1',style: TextStyle(color: Colors.white),),
-                  )
-                ],
-              ),
-            ],
-          ),
+                    Container(
+                      width: 80.0,
+                      margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                      alignment: Alignment.bottomCenter,
+                      child: Text('Test1',style: TextStyle(color: Colors.white),),
+                    )
+                  ],
+                ),
+              );
+            },
+            itemCount: 1,
+          )
         )
       ],
     );
