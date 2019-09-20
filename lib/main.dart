@@ -9,6 +9,7 @@ import 'package:recipe_app/bloc/recipes/recipes_provider.dart';
 import 'package:recipe_app/bloc/recipes/recipes_bloc.dart';
 import 'package:recipe_app/repository/api.dart';
 import 'package:recipe_app/ui/create.dart';
+import 'package:recipe_app/ui/login.dart';
 
 void main() =>runApp(MyApp());
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
 
   var routes = <String, WidgetBuilder>{
     '/main':(BuildContext context) => MyHomePage(key: Key("mainPage"), title: "Recipe",),
-    '/create':(BuildContext context) => RecipesProvider(recipesBloc: RecipesBloc(API()), child:CreateRecipe(key: Key("mainPage"),),)
+    '/create':(BuildContext context) => RecipesProvider(recipesBloc: RecipesBloc(API()), child:CreateRecipe(key: Key("mainPage"),),),
+    '/login':(BuildContext context) => LoginPage(key: Key("loginPage"))
   };
   // This widget is the root of your application.
   @override
