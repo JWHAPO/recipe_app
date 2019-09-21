@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -8,6 +10,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -53,5 +60,23 @@ class _LoginPageState extends State<LoginPage> {
         )
       ],
     );
+  }
+
+  Future<String> signInWithGoogle() async {
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+        idToken: googleSignInAuthentication.accessToken,
+        accessToken: googleSignInAuthentication.idToken
+    );
+
+    final FirebaseUser user = await _auth.signInWithCredential(credential);
+
+    final FirebaseUser currentUser = await _auth.currentUser();
+
+
+    return 'signInWithGoogle succeeded: $user';
   }
 }
