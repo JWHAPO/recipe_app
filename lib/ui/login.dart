@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:recipe_app/main.dart';
+import 'package:recipe_app/model/google_user.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -51,6 +53,18 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   onPressed: (){
+//                    signInWithGoogle().then((FirebaseUser user) => print(user)).catchError((e) => print(e)),
+                    signInWithGoogle().whenComplete((){
+                      Navigator.of(context).push(
+
+                          MaterialPageRoute(builder: (context){
+                            return MyHomePage(key: Key("mainPage"), title: "Recipe",);
+                          },
+                          )
+
+                        );
+                      }
+                    );
 
                   },
                 ),
@@ -62,21 +76,51 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<String> signInWithGoogle() async {
+  Future<FirebaseUser> signInWithGoogle() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.getCredential(
-        idToken: googleSignInAuthentication.accessToken,
-        accessToken: googleSignInAuthentication.idToken
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken
     );
 
-    final FirebaseUser user = await _auth.signInWithCredential(credential);
+    final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+    ProviderDetails providerInfo = new ProviderDetails(user.providerId);
+
+    List<ProviderDetails> providerData = new List<ProviderDetails>();
+    providerData.add(providerInfo);
+
+    assert(user.email != null);
+    assert(user.displayName != null);
+    assert(user.photoUrl != null);
+
+    assert(!user.isAnonymous);
+    assert(await user.getIdToken() != null);
+
+    GoogleUser googleUser = new GoogleUser(user.providerId, user.displayName, user.photoUrl, user.email, providerData);
 
     final FirebaseUser currentUser = await _auth.currentUser();
+    assert(user.uid == currentUser.uid);
 
 
-    return 'signInWithGoogle succeeded: $user';
+    Navigator.of(context).push(
+
+        MaterialPageRoute(builder: (context){
+          return MyHomePage(key: Key("mainPage"), title: "Recipe",);
+          //return MyHomePage(key:Key("mainPage"), title: "Recipe", user: googleUser),
+        },
+        )
+
+    );
+
+    return user;
+  }
+
+  void signOutGoogle() async{
+    await googleSignIn.signOut();
+
+    print('User Sign Out');
   }
 }
