@@ -69,6 +69,29 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
               ),
+            ),
+            Container(
+              width: 250.0,
+              child: Align(
+                alignment: Alignment.center,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(Icons.face),
+                      SizedBox(width: 10.0,),
+                      Text('Sign in with Facebook', style: TextStyle(color: Colors.black, fontSize: 18.0),)
+                    ],
+                  ),
+                  onPressed: (){
+
+                  },
+                ),
+              ),
             )
           ],
         )
