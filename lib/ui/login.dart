@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:recipe_app/main.dart';
 import 'package:recipe_app/model/google_user.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 
 class LoginPage extends StatefulWidget {
@@ -16,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  bool isLoggedIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +58,18 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   onPressed: (){
-//                    signInWithGoogle().then((FirebaseUser user) => print(user)).catchError((e) => print(e)),
-                    signInWithGoogle().whenComplete((){
-                      Navigator.of(context).push(
-
-                          MaterialPageRoute(builder: (context){
-                            return MyHomePage(key: Key("mainPage"), title: "Recipe",);
-                          },
-                          )
-
-                        );
-                      }
-                    );
+                    signInWithGoogle().then((FirebaseUser user) => print(user)).catchError((e) => print(e));
+//                    signInWithGoogle().whenComplete((){
+//                      Navigator.of(context).push(
+//
+//                          MaterialPageRoute(builder: (context){
+//                            return MyHomePage(key: Key("mainPage"), title: "Recipe",);
+//                          },
+//                          )
+//
+//                        );
+//                      }
+//                    );
 
                   },
                 ),
@@ -88,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   onPressed: (){
-
+                    initiateFacebookLogin();
                   },
                 ),
               ),
@@ -127,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
     final FirebaseUser currentUser = await _auth.currentUser();
     assert(user.uid == currentUser.uid);
 
-
+    isLoggedIn = true;
     Navigator.of(context).push(
 
         MaterialPageRoute(builder: (context){
@@ -139,6 +144,40 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     return user;
+  }
+
+  void onLoginStatusChanged(bool isLoggedIn){
+    setState(() {
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
+
+  void initiateFacebookLogin() async {
+    var facebookLogin = FacebookLogin();
+    var facebookLoginResult =
+        await facebookLogin.logIn(['email']);
+
+    switch(facebookLoginResult.status){
+      case FacebookLoginStatus.error:
+        print('Facebook Login Error');
+        onLoginStatusChanged(false);
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        print('CancelledFacebookLoginByUser');
+        onLoginStatusChanged(false);
+        break;
+      case FacebookLoginStatus.loggedIn:
+        print('LoggedIn');
+        var graphResponse = await http.get(
+            'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${facebookLoginResult
+                .accessToken.token}');
+
+        var profile = json.decode(graphResponse.body);
+        print(profile.toString());
+
+        onLoginStatusChanged(true);
+        break;
+    }
   }
 
   void signOutGoogle() async{
