@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   onPressed: (){
-                    initiateFacebookLogin();
+                    //email login method
                   },
                 ),
               ),
