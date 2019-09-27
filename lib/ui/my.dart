@@ -55,6 +55,16 @@ class _MyPageState extends State<MyPage> {
             },
             child: Text('공지사항', style: TextStyle(fontFamily: 'iropke'),),
           ),
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: RaisedButton(
+            color: Colors.pinkAccent,
+            onPressed: (){
+
+            },
+            child: Text('이벤트', style: TextStyle(fontFamily: 'iropke'),),
+          ),
         )
       ],
     );
