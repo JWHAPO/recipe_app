@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/ui/notice.dart';
+import 'package:recipe_app/ui/event.dart';
 
 class MyPage extends StatefulWidget {
 
