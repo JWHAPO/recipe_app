@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ManeDashboardPage extends StatelessWidget {
+final Color backgroundColor = Color(0xFF4A4A58);
 
-  final Color backgroundColor = Color(0xFF4A4A58);
+class ManeDashboardPage extends StatefulWidget {
+
+  @override
+  _ManeDashboardPageState createState() => _ManeDashboardPageState();
+}
+
+class _ManeDashboardPageState extends State<ManeDashboardPage> {
+  bool isCollapsed = true;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +42,29 @@ class ManeDashboardPage extends StatelessWidget {
             Text('Funds Trasfer', style: TextStyle(color: Colors.white, fontSize: 20),),
             SizedBox(height: 10,),
             Text('Branches', style: TextStyle(color: Colors.white, fontSize: 20),)
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget dashboard(context){
+    return Material(
+      elevation: 8,
+      color: backgroundColor,
+      child: Container(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 48),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Icon(Icons.menu, color: Colors.white,),
+                Text('My Card', style: TextStyle(fontSize: 24, color: Colors.white),),
+                Icon(Icons.settings, color: Colors.white,),
+              ],
+            )
           ],
         ),
       ),
